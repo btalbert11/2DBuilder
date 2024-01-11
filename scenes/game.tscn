@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpka061owg35q"]
+
+[ext_resource type="PackedScene" uid="uid://hd84imoxjnwl" path="res://scenes/player.tscn" id="1_5b1tv"]
+[ext_resource type="PackedScene" uid="uid://8na67jqmt32b" path="res://scenes/ocean_tile.tscn" id="2_olgjq"]
+[ext_resource type="PackedScene" uid="uid://dus5wxe0foffv" path="res://scenes/box.tscn" id="3_dc87h"]
+[ext_resource type="PackedScene" uid="uid://cibc5swx4osy6" path="res://scenes/grass_tile.tscn" id="4_w22qh"]
+[ext_resource type="PackedScene" uid="uid://b6djxxw1feinw" path="res://scenes/overworld_camera.tscn" id="5_vhg8p"]
+[ext_resource type="Script" path="res://scenes/WoodLabel.gd" id="6_elueu"]
+
+[node name="Game" type="Node2D"]
+
+[node name="OceanTiles2" type="Node2D" parent="."]
+
+[node name="OceanTile" parent="OceanTiles2" instance=ExtResource("2_olgjq")]
+position = Vector2(400, 80)
+metadata/_edit_lock_ = true
+
+[node name="OceanTile8" parent="OceanTiles2" instance=ExtResource("2_olgjq")]
+position = Vector2(320, 0)
+metadata/_edit_lock_ = true
+
+[node name="OceanTile9" parent="OceanTiles2" instance=ExtResource("2_olgjq")]
+position = Vector2(480, 80)
+metadata/_edit_lock_ = true
+
+[node name="OceanTile2" parent="OceanTiles2" instance=ExtResource("2_olgjq")]
+position = Vector2(80, 0)
+metadata/_edit_lock_ = true
+
+[node name="OceanTile3" parent="OceanTiles2" instance=ExtResource("2_olgjq")]
+position = Vector2(240, 0)
+metadata/_edit_lock_ = true
+
+[node name="OceanTile4" parent="OceanTiles2" instance=ExtResource("2_olgjq")]
+metadata/_edit_lock_ = true
+
+[node name="OceanTile5" parent="OceanTiles2" instance=ExtResource("2_olgjq")]
+position = Vector2(0, 80)
+metadata/_edit_lock_ = true
+
+[node name="OceanTile6" parent="OceanTiles2" instance=ExtResource("2_olgjq")]
+position = Vector2(0, 160)
+metadata/_edit_lock_ = true
+
+[node name="OceanTile7" parent="OceanTiles2" instance=ExtResource("2_olgjq")]
+position = Vector2(160, 0)
+metadata/_edit_lock_ = true
+
+[node name="GrassTiles2" type="Node2D" parent="."]
+
+[node name="GrassTile" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(80, 80)
+
+[node name="GrassTile2" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(160, 80)
+
+[node name="GrassTile3" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(240, 80)
+
+[node name="GrassTile4" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(320, 80)
+
+[node name="GrassTile5" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(320, 160)
+
+[node name="GrassTile6" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(240, 160)
+
+[node name="GrassTile7" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(160, 160)
+
+[node name="GrassTile8" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(80, 160)
+
+[node name="GrassTile9" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(80, 240)
+
+[node name="GrassTile10" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(160, 240)
+
+[node name="GrassTile11" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(240, 240)
+
+[node name="GrassTile12" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(320, 240)
+
+[node name="GrassTile13" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(400, 240)
+
+[node name="GrassTile14" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(400, 160)
+
+[node name="GrassTile15" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(480, 160)
+
+[node name="GrassTile16" parent="GrassTiles2" instance=ExtResource("4_w22qh")]
+position = Vector2(480, 240)
+
+[node name="Box" parent="." instance=ExtResource("3_dc87h")]
+position = Vector2(240, 320)
+
+[node name="Box2" parent="." instance=ExtResource("3_dc87h")]
+position = Vector2(400, 320)
+
+[node name="Player" parent="." instance=ExtResource("1_5b1tv")]
+position = Vector2(320, 160)
+
+[node name="OverworldCamera" parent="." instance=ExtResource("5_vhg8p")]
+
+[node name="WoodLabel" type="Label" parent="OverworldCamera"]
+offset_left = -560.0
+offset_top = -320.0
+offset_right = -497.0
+offset_bottom = -294.0
+text = "Wood: 0"
+script = ExtResource("6_elueu")

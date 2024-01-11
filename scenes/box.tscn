@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dus5wxe0foffv"]
+
+[ext_resource type="Texture2D" uid="uid://bpi4wi0e0over" path="res://icon.svg" id="1_122l6"]
+[ext_resource type="Script" path="res://scenes/box.gd" id="1_iq1eg"]
+[ext_resource type="Script" path="res://nodes/HealthComponent.gd" id="2_r0pck"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhn2a"]
+size = Vector2(73, 70)
+
+[node name="Box" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_iq1eg")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(40, 40)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("1_122l6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_bhn2a")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_r0pck")
+
+[connection signal="no_health" from="HealthComponent" to="." method="_on_health_component_no_health"]
