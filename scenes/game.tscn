@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpka061owg35q"]
+[gd_scene load_steps=8 format=3 uid="uid://cpka061owg35q"]
 
 [ext_resource type="PackedScene" uid="uid://hd84imoxjnwl" path="res://scenes/player.tscn" id="1_5b1tv"]
 [ext_resource type="PackedScene" uid="uid://8na67jqmt32b" path="res://scenes/ocean_tile.tscn" id="2_olgjq"]
 [ext_resource type="PackedScene" uid="uid://dus5wxe0foffv" path="res://scenes/box.tscn" id="3_dc87h"]
 [ext_resource type="PackedScene" uid="uid://cibc5swx4osy6" path="res://scenes/grass_tile.tscn" id="4_w22qh"]
 [ext_resource type="PackedScene" uid="uid://b6djxxw1feinw" path="res://scenes/overworld_camera.tscn" id="5_vhg8p"]
-[ext_resource type="Script" path="res://scenes/WoodLabel.gd" id="6_elueu"]
+[ext_resource type="Script" path="res://scripts/wood_label.gd" id="6_hl43g"]
+[ext_resource type="PackedScene" uid="uid://d0twyvatf00wp" path="res://scenes/basic_tree.tscn" id="7_ai0kf"]
 
 [node name="Game" type="Node2D"]
 
@@ -103,7 +104,7 @@ position = Vector2(240, 320)
 position = Vector2(400, 320)
 
 [node name="Player" parent="." instance=ExtResource("1_5b1tv")]
-position = Vector2(320, 160)
+z_index = 1
 
 [node name="OverworldCamera" parent="." instance=ExtResource("5_vhg8p")]
 
@@ -113,4 +114,7 @@ offset_top = -320.0
 offset_right = -497.0
 offset_bottom = -294.0
 text = "Wood: 0"
-script = ExtResource("6_elueu")
+script = ExtResource("6_hl43g")
+
+[node name="BasicTree" parent="." instance=ExtResource("7_ai0kf")]
+position = Vector2(240, 240)
