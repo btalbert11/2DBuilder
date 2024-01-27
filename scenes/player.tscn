@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://hd84imoxjnwl"]
+[gd_scene load_steps=5 format=3 uid="uid://hd84imoxjnwl"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_u7p8c"]
 [ext_resource type="Texture2D" uid="uid://c8r5eg2s072o1" path="res://art/Unamused Box.png" id="2_tde4w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5y8ny"]
 size = Vector2(76, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_672t2"]
+size = Vector2(76, 78)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
@@ -25,3 +28,29 @@ shape = SubResource("RectangleShape2D_5y8ny")
 position = Vector2(40, 40)
 target_position = Vector2(0, 80)
 collision_mask = 2
+
+[node name="Popup" type="Popup" parent="."]
+
+[node name="SearchInteractable" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchInteractable"]
+position = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_672t2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HarvestResource" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+offset_right = 89.0
+offset_bottom = 23.0
+text = "Chop Wood"
+
+[connection signal="area_entered" from="SearchInteractable" to="." method="_on_search_interactable_area_entered"]
+[connection signal="area_exited" from="SearchInteractable" to="." method="_on_search_interactable_area_exited"]

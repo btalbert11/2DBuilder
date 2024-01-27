@@ -11,6 +11,9 @@ signal moved_to(grid_location: Vector2)
 var move_hold_timer: float = 0
 var move_continous: float = 5
 var last_direction_pressed: String = ""
+var ignore_movement: bool = false
+var current_tile: Node = null : set = _set_current_tile, get = _get_current_tile
+
 
 var inputs = {
 	"up" : Vector2.UP,
@@ -25,6 +28,8 @@ func _ready():
 
 
 func _physics_process(delta):
+	if ignore_movement:
+		return
 	if last_direction_pressed != "":
 		if Input.is_action_pressed(last_direction_pressed):
 			move_hold_timer += delta
@@ -35,18 +40,25 @@ func _physics_process(delta):
 					move_continous = 0
 
 func _unhandled_input(event):
-	for item in inputs:
-		if event.is_action_pressed(item):
-			move(item)
-			last_direction_pressed = item
+	# If menu is open
+	if ignore_movement:
+		return
+	# Handle Movement
+	for dir in inputs:
+		if event.is_action_pressed(dir):
+			move(dir)
+			last_direction_pressed = dir
 			move_hold_timer = 0
 			move_continous = 5
-	if last_direction_pressed == "":
-		return
-	elif event.is_action_released(last_direction_pressed):
+	# if last_direction_pressed == "":
+	# 	return
+	if event.is_action_released(last_direction_pressed):
 		last_direction_pressed = ""
 		move_hold_timer = 0
 		move_continous = 5
+	# Handle Interacting
+	if Input.is_action_just_pressed("player_interact") && current_tile != null:
+		current_tile.player_interact()
 
 
 func move(direction):
@@ -60,3 +72,27 @@ func move(direction):
 		var obj = ray.get_collider()
 		if obj.has_node("./HealthComponent"):
 			obj.take_attack(attack)
+
+func toggle_labels():
+	if $Control/HarvestResource.visible:
+		$Control/HarvestResource.visible = false
+	if current_tile is ResourceNode:
+		$Control/HarvestResource.visible = true
+
+func _set_current_tile(new_tile):
+	current_tile = new_tile
+
+func _get_current_tile():
+	return current_tile
+
+func _on_search_interactable_area_entered(area):
+	var top = area.get_owner()
+	if top is InteractableNode:
+		current_tile = top
+		toggle_labels()	
+
+func _on_search_interactable_area_exited(area):
+	var top = area.get_owner()
+	if top == current_tile:
+		current_tile = null
+		toggle_labels()

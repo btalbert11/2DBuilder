@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dus5wxe0foffv"]
 
 [ext_resource type="Texture2D" uid="uid://bpi4wi0e0over" path="res://icon.svg" id="1_122l6"]
-[ext_resource type="Script" path="res://scenes/box.gd" id="1_iq1eg"]
+[ext_resource type="Script" path="res://scripts/box.gd" id="1_vmhnk"]
 [ext_resource type="Script" path="res://nodes/HealthComponent.gd" id="2_r0pck"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhn2a"]
@@ -10,7 +10,7 @@ size = Vector2(73, 70)
 [node name="Box" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_iq1eg")
+script = ExtResource("1_vmhnk")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

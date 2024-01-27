@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpka061owg35q"]
+[gd_scene load_steps=9 format=3 uid="uid://cpka061owg35q"]
 
 [ext_resource type="PackedScene" uid="uid://hd84imoxjnwl" path="res://scenes/player.tscn" id="1_5b1tv"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_hw5bu"]
 [ext_resource type="PackedScene" uid="uid://8na67jqmt32b" path="res://scenes/ocean_tile.tscn" id="2_olgjq"]
 [ext_resource type="PackedScene" uid="uid://dus5wxe0foffv" path="res://scenes/box.tscn" id="3_dc87h"]
 [ext_resource type="PackedScene" uid="uid://cibc5swx4osy6" path="res://scenes/grass_tile.tscn" id="4_w22qh"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d0twyvatf00wp" path="res://scenes/basic_tree.tscn" id="7_ai0kf"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_hw5bu")
 
 [node name="OceanTiles2" type="Node2D" parent="."]
 
@@ -105,6 +107,10 @@ position = Vector2(400, 320)
 
 [node name="Player" parent="." instance=ExtResource("1_5b1tv")]
 z_index = 1
+position = Vector2(80, 80)
+
+[node name="BasicTree" parent="." instance=ExtResource("7_ai0kf")]
+position = Vector2(240, 160)
 
 [node name="OverworldCamera" parent="." instance=ExtResource("5_vhg8p")]
 
@@ -116,5 +122,22 @@ offset_bottom = -294.0
 text = "Wood: 0"
 script = ExtResource("6_hl43g")
 
-[node name="BasicTree" parent="." instance=ExtResource("7_ai0kf")]
-position = Vector2(240, 240)
+[node name="PlayerMenu" type="TabContainer" parent="OverworldCamera"]
+process_mode = 4
+visible = false
+offset_left = -320.0
+offset_top = -240.0
+offset_right = 160.0
+
+[node name="Construction" type="Button" parent="OverworldCamera/PlayerMenu"]
+layout_mode = 2
+
+[node name="TreeHarvester" type="Button" parent="OverworldCamera/PlayerMenu/Construction"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 49.0
+text = "Tree Harvester"
+
+[node name="Research" type="Button" parent="OverworldCamera/PlayerMenu"]
+visible = false
+layout_mode = 2
