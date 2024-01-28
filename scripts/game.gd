@@ -14,11 +14,9 @@ func _process(delta):
 func _input(event):
 	if event.is_action_pressed("player_menu_toggle"):
 		if !$OverworldCamera/PlayerMenu.visible:
-			$OverworldCamera/PlayerMenu.set_process(true)
 			$OverworldCamera/PlayerMenu.show()
 			$Player.ignore_movement = true
 		else:
-			$OverworldCamera/PlayerMenu.set_process(false)
 			$OverworldCamera/PlayerMenu.hide()
 			$Player.ignore_movement = false
 

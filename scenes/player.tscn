@@ -45,7 +45,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HarvestResource" type="Label" parent="Control"]
+[node name="Interactable" type="Label" parent="Control"]
 visible = false
 layout_mode = 1
 offset_right = 89.0
