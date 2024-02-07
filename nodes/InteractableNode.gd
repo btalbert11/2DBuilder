@@ -6,7 +6,7 @@ var player_text: String
 func get_player_text():
 	return "UNIMPLEMENTED GET PLAYER TEXT"
 
-func player_interact():
+func player_interact(player: Node2D):
 	pass
 
 

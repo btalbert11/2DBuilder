@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsb54lvt3gugb"]
+
+[ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_trj15"]
+[ext_resource type="Script" path="res://scripts/player_menu.gd" id="1_ubc8h"]
+
+[node name="PlayerUI" type="Node2D"]
+script = ExtResource("1_trj15")
+
+[node name="PlayerMenu" type="TabContainer" parent="."]
+offset_left = -320.0
+offset_top = -240.0
+offset_right = 167.0
+script = ExtResource("1_ubc8h")
+
+[node name="Crafting" type="Button" parent="PlayerMenu"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PlayerMenu/Crafting"]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 209.0
+columns = 8
+
+[node name="Spear" type="Button" parent="PlayerMenu/Crafting/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Spear: 
+"
+
+[node name="Club" type="Button" parent="PlayerMenu/Crafting/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Club
+"
+
+[node name="House" type="Button" parent="PlayerMenu/Crafting/GridContainer"]
+visible = false
+layout_mode = 2
+text = "House
+"
+
+[node name="Paper" type="Button" parent="PlayerMenu/Crafting/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Paper
+"
+
+[node name="Research" type="Button" parent="PlayerMenu"]
+visible = false
+layout_mode = 2
+
+[connection signal="button_down" from="PlayerMenu/Crafting/GridContainer/Spear" to="PlayerMenu" method="_on_spear_button_down"]
+[connection signal="button_down" from="PlayerMenu/Crafting/GridContainer/Club" to="PlayerMenu" method="_on_club_button_down"]
+[connection signal="button_down" from="PlayerMenu/Crafting/GridContainer/House" to="PlayerMenu" method="_on_house_button_down"]
+[connection signal="button_down" from="PlayerMenu/Crafting/GridContainer/Paper" to="PlayerMenu" method="_on_paper_button_down"]

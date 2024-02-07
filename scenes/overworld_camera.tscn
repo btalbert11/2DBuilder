@@ -3,16 +3,16 @@
 [ext_resource type="Script" path="res://scripts/overworld_camera.gd" id="1_c4rh6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36b3j"]
-size = Vector2(72, 630)
+size = Vector2(72, 960)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6qha"]
-size = Vector2(67, 629)
+size = Vector2(67, 960)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ycot"]
-size = Vector2(1111, 70)
+size = Vector2(1440, 70)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83asq"]
-size = Vector2(1103, 66)
+size = Vector2(1440, 66)
 
 [node name="OverworldCamera" type="Camera2D"]
 position = Vector2(560, 320)
@@ -22,25 +22,25 @@ script = ExtResource("1_c4rh6")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary"]
-position = Vector2(-600, -1)
+position = Vector2(-760, 0)
 shape = SubResource("RectangleShape2D_36b3j")
 
 [node name="RightBoundary" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoundary"]
-position = Vector2(598.5, 0)
+position = Vector2(760, 0)
 shape = SubResource("RectangleShape2D_l6qha")
 
 [node name="UpBoundary" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpBoundary"]
-position = Vector2(-0.5, -360)
+position = Vector2(0, -520)
 shape = SubResource("RectangleShape2D_3ycot")
 
 [node name="DownBoundary" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownBoundary"]
-position = Vector2(-2.5, 360)
+position = Vector2(0, 520)
 shape = SubResource("RectangleShape2D_83asq")
 
 [connection signal="body_entered" from="LeftBoundary" to="." method="_on_left_boundary_body_entered"]

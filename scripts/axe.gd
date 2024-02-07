@@ -3,8 +3,8 @@ extends InteractableNode
 func _ready():
 	player_text = "Pickup Axe"
 
-func player_interact():
-	PlayerResources.player_has_axe = true
+func player_interact(player: Node2D):
+	player.has_axe = true
 	delete_self()
 
 func get_player_text():

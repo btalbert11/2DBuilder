@@ -11,9 +11,12 @@ func _ready():
 func _process(delta):
 	pass
 
-func player_interact():
-	PlayerResources.wood += 1
+func player_interact(player: Node2D):
+	if PlayerResources.player_has_axe:
+		PlayerResources.wood += 1
 
 func get_player_text():
+	if !PlayerResources.player_has_axe:
+		return "Need an Axe"
 	return player_text
 	

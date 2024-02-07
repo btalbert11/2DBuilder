@@ -17,7 +17,18 @@ var ignore_movement: bool = false
 # For interactable objects in the game
 var current_tile: Node = null : set = _set_current_tile, get = _get_current_tile
 # Player equipment
-var has_axe: bool = false
+signal got_axe
+var has_axe: bool = false :
+	set(value): 
+		got_axe.emit()
+signal got_spear
+var has_spear: bool = false :
+	set(value):
+		got_spear.emit()
+signal got_club
+var has_club: bool = false :
+	set(value):
+		got_club.emit()
 
 var inputs = {
 	"up" : Vector2.UP,
@@ -31,8 +42,6 @@ func _ready():
 	attack = Attack.new()
 	attack.damage = damage
 
-	# Give a perminent refrence to the global object
-	PlayerResources.PLAYER_NODE = self
 
 func _physics_process(delta):
 	if ignore_movement:
@@ -65,7 +74,7 @@ func _unhandled_input(event):
 		move_continous = 5
 	# Handle Interacting
 	if Input.is_action_just_pressed("player_interact") && current_tile != null:
-		current_tile.player_interact()
+		current_tile.player_interact(self)
 
 
 func move(direction):
